@@ -1,11 +1,27 @@
+import SwiftSyntaxMacros
+import SwiftSyntaxMacrosTestSupport
 import XCTest
-@testable import LuaSwift
+import LuaSwiftMacros
 
-final class LuaSwiftTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(LuaSwift().text, "Hello, World!")
+let testMacros: [String: Macro.Type] = [
+    "LuaFunction": LuaFunctionMacro.self,
+]
+
+final class LuaFunctionMacroTests: XCTestCase {
+    
+    func testMacroNoAttributes() {
+        assertMacroExpansion(
+            """
+            @LuaFunction
+            func helloWorld() {
+            }
+            """,
+            expandedSource: """
+
+            func helloWorld() {
+            }
+            """,
+            macros: testMacros
+        )
     }
 }

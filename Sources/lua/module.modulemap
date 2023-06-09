@@ -1,8 +1,7 @@
 module lua [system] {
-  header "/usr/local/include/lua/lauxlib.h"
-  header "/usr/local/include/lua/lua.h"
-//  header "/usr/local/include/lua/luaconf.h"
-  header "/usr/local/include/lua/lualib.h"
+  header "/opt/homebrew/include/lua/lauxlib.h"
+  header "/opt/homebrew/include/lua/lua.h"
+  header "/opt/homebrew/include/lua/lualib.h"
   link "lua"
   export *
 }
